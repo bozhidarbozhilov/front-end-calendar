@@ -1,0 +1,53 @@
+.calendar {
+    background-color: aliceblue;
+    width: 80%;
+    margin:10px auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+.month-year{
+    width:100%;
+    text-align: center;
+    padding: 20px;
+    font-size: 1.5rem;
+}
+.month-name {
+    text-align: center;
+}
+.week {
+    width: 100%;
+    height: fit-content;
+    display:flex;
+}
+.week-days{
+    height: fit-content;
+    display: flex;
+    width: 100%;
+}
+.day{
+    width: 20%;
+    text-align: center;
+    border-top: 1.5px solid black;
+    border-bottom: 1.5px solid black;
+    border-left: 1.5px solid black;
+    padding: 5px;
+    
+}
+.day:last-child{
+    border-right: 1.5px solid black;
+}
+.date-contaiter {
+    width: 100%;
+    display:flex;
+}
+.date{
+    width: 20%;
+    height: 50px;
+    border-bottom: 1.5px solid black;
+    border-left: 1.5px solid;
+    padding: 5px;
+}
+.date:last-child{
+    border-right: 1.5px solid black;
+}
