@@ -18,25 +18,49 @@ function fillCurrentMonth(date){
     const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
     const firstIndex = firstDay.getUTCDay();
     const lastIndex = lastDay.getUTCDay();
-    const firstWeek = document.getElementsByClassName("date");
+    const firstWeek = Array.from(document.getElementsByClassName("date"));
+    const monthLength = daysInMonth(date.getMonth(), date.getFullYear());
     let currentDate = 1;
-    console.log(firstWeek.length);
-    for(let index = firstIndex; index < firstWeek.length; index++){
-        firstWeek[index].innerText = currentDate;
-        currentDate++;
+    let firstWeekDay = new Date(date.getFullYear(), date.getMonth() - 1, -(firstIndex-1)).getUTCDate();
+    
+    // fill the begining dates
+    for(let i = 0; i < firstIndex; i++){
+        firstWeek[i].classList.add("pn-month");
+        firstWeek[i].innerText = firstWeekDay++;
     }
-    const weekElement = document.createElement("div");
-    weekElement.classList.add("week");
-    calendarContainer.appendChild(weekElement);
 
-    // for(let index = currentDate; index <= currentDate + 7; index++){
-    //     const dayElement = document.createElement("div");
-    //     dayElement.classList.add("date");
-    //     weekElement.appendChild(dayElement);
-    //     dayElement.innerText = currentDate;
-    //     currentDate++;
-        
-    // }
+    // fill first week
+    for(let i = firstIndex; i < 7;i++){
+        firstWeek[i].innerText = currentDate++;
+    }
+
+    // fill the rest of the month
+    let weekEl;
+    for(let i = 0; i < monthLength; i++){
+        if(i%7 == 0){
+            weekEl = document.createElement("div");
+            weekEl.classList.add("week");
+            calendarContainer.appendChild(weekEl);
+        }
+        const dayEl = document.createElement("div");
+        dayEl.classList.add("date");
+        dayEl.innerText = currentDate + i;
+        weekEl.appendChild(dayEl);
+    }
+    const allWeeks = document.getElementsByClassName("week");
+    const lastWeek = allWeeks[allWeeks.length - 1];
+    for(let i = lastIndex + 1; i < 7; i++){
+        const dayEl = document.createElement("div");
+        dayEl.classList.add("date");
+        dayEl.classList.add("pn-month");
+        dayEl.innerText = i - lastIndex;
+        lastWeek.appendChild(dayEl);
+    }
 
 
+;
+
+}
+function daysInMonth (month, year) {
+    return new Date(year, month, 0).getDate();
 }

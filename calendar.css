@@ -18,15 +18,16 @@
 .week {
     width: 100%;
     height: fit-content;
-    display:flex;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
 }
 .week-days{
     height: fit-content;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
     width: 100%;
 }
 .day{
-    width: 20%;
     text-align: center;
     border-top: 1.5px solid black;
     border-bottom: 1.5px solid black;
@@ -41,8 +42,12 @@
     width: 100%;
     display:flex;
 }
+.pn-month{
+    background-color: rgba(0,0,0,0.3);
+}
 .date{
-    width: 20%;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
     height: 50px;
     border-bottom: 1.5px solid black;
     border-left: 1.5px solid;
