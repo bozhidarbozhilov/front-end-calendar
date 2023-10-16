@@ -7,15 +7,17 @@
     <link rel="stylesheet" href="./calendar.css">
 </head>
 <body>
-    <div class="calendar">
-        <div class="month-year">
-            <button class="btn" id="prev-btn">Previous</button>
-            <div>
-                <span class="month-name" id="month-name"></span><span>&nbsp;&nbsp;</span><span class="year-value" id="year-value"></span>
-            </div>
-            
-            <button class="btn" id="next-btn">Next</button>
-            </div>
+    <div class="month-year">
+        <button class="btn" id="prev-btn">Previous</button>
+        <button class="btn" id="current-month-btn">Current Month</button>
+        <div class="names-container" id="names-container">
+            <span class="month-name" id="month-name"></span><span>&nbsp;&nbsp;</span><span class="year-value" id="year-value"></span>
+        </div>
+        
+        <button class="btn" id="next-btn">Next</button>
+    </div>
+    <div class="calendar" id="calendar-container">
+
         <div class="week-days">
             <div class="day">Mon</div>
             <div class="day">Tue</div>
@@ -25,7 +27,7 @@
             <div class="day">Sat</div>
             <div class="day">Sun</div>
         </div>
-        <div class="date-container" id="calendar-container">
+        <div class="date-container" >
             <div class="week">
                 <div class="date"></div>
                 <div class="date"></div>
