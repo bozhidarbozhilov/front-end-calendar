@@ -1,13 +1,10 @@
 const monthNames = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"];
 (function calendar(){
     let currentDate = new Date();
-
     let currentMonth = document.getElementById("month-name").innerText;
     let currentMonthIndex = monthNames.indexOf(currentMonth);
     let currentYear = document.getElementById("year-value").innerText;
     const generateBtn = document.getElementById("current-month-btn");
-    //fillMonth(currentDate.getMonth(), currentDate.getFullYear());
-    
     const prevBtn = document.getElementById("prev-btn");
     const nextBtn = document.getElementById("next-btn");
     const calendarContainer = document.getElementById("calendar-container");
@@ -79,17 +76,15 @@ function fillMonth(month, year){
     const previousMonthSlice = monthLength - firstIndex + 2;
     let firstWeekDay = new Date(year, month - 1, previousMonthSlice).getUTCDate();
 
-    // fill the begining dates
+    // fill the begining dates from previous month
     for(let i = 0; i < firstIndex; i++){
         firstWeek[i].classList.add("pn-month");
         firstWeek[i].innerText = firstWeekDay++;
     }
-
     // fill first week
     for(let i = firstIndex; i < 7;i++){
         firstWeek[i].innerText = currentDate++;
     }
-
     // fill the rest of the month
     let weekEl;
     let dayCounter = 0
@@ -105,8 +100,7 @@ function fillMonth(month, year){
         weekEl.appendChild(dayEl);
         dayCounter++;
     }
-    
-    // fill last week
+    // fill last week with next month days
     if(lastIndex < 7){
         const allWeeks = document.getElementsByClassName("week");
         const lastWeek = allWeeks[allWeeks.length - 1];
@@ -119,7 +113,6 @@ function fillMonth(month, year){
         }
     
     }
-
 }
 function daysInMonth (month, year) {
     return new Date(year, month+1, 0).getDate();
