@@ -72,10 +72,10 @@ function fillMonth(month, year){
     const lastIndex = lastDay.getUTCDay();
     const firstWeek = Array.from(document.getElementsByClassName("date"));
     const monthLength = daysInMonth(month, year);
+    const prevMonthLength = daysInMonth(month-1, year);
     let currentDate = 1;
-    const previousMonthSlice = monthLength - firstIndex + 2;
+    const previousMonthSlice = prevMonthLength - firstIndex + 2;
     let firstWeekDay = new Date(year, month - 1, previousMonthSlice).getUTCDate();
-
     // fill the begining dates from previous month
     for(let i = 0; i < firstIndex; i++){
         firstWeek[i].classList.add("pn-month");
