@@ -1,3 +1,7 @@
+.content-container {
+    max-width: 80%;
+    margin:0 auto;
+}
 .calendar {
     background-color: aliceblue;
     width: 80%;

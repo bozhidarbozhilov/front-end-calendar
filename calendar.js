@@ -2,9 +2,9 @@ const monthNames = ["January", "February", "March", "April", "May", "June","July
 (function calendar(){
     let currentDate = new Date();
 
-    const currentMonth = document.getElementById("month-name").innerText;
-    const currentMonthIndex = monthNames.indexOf(currentMonth);
-    const currentYear = document.getElementById("year-value").innerText;
+    let currentMonth = document.getElementById("month-name").innerText;
+    let currentMonthIndex = monthNames.indexOf(currentMonth);
+    let currentYear = document.getElementById("year-value").innerText;
     const generateBtn = document.getElementById("current-month-btn");
     //fillMonth(currentDate.getMonth(), currentDate.getFullYear());
     
@@ -19,9 +19,35 @@ const monthNames = ["January", "February", "March", "April", "May", "June","July
         fillMonth(currentDate.getMonth(), currentDate.getFullYear());
     })
     prevBtn.addEventListener("click",()=>{
+        currentMonth = document.getElementById("month-name").innerText;
+        currentMonthIndex = monthNames.indexOf(currentMonth);
+        currentYear = document.getElementById("year-value").innerText;
+        let newMonth;
+        let newYear;
+        if(currentMonthIndex === 0){
+            newMonth = 11;
+            newYear = Number(currentYear) - 1;
+        }else{
+            newMonth = currentMonthIndex - 1;
+            newYear = currentYear;
+        }
+        refreshContent();
+        fillMonth(newMonth, newYear);
+    });
+    nextBtn.addEventListener("click",()=>{
+        currentMonth = document.getElementById("month-name").innerText;
+        currentMonthIndex = monthNames.indexOf(currentMonth);
+        currentYear = document.getElementById("year-value").innerText;
         console.log(currentMonth);
-        const newMonth = currentMonthIndex - 1;
-        const newYear = currentYear;
+        let newMonth = currentMonthIndex + 1;
+        let newYear;
+        if(newMonth === 12){
+            newMonth = 0;
+            newYear = Number(currentYear) + 1;
+        }else{
+            newYear = currentYear;
+        }
+        
         refreshContent();
         fillMonth(newMonth, newYear);
     });
